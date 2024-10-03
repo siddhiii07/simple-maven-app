@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Apache Maven 3.9.9' // Use your Maven version
+        maven 'Maven 3.9.9' // Use your Maven version
     }
 
     stages {
