@@ -1,39 +1,37 @@
 pipeline {
-    agent any
+    agent any 
 
     tools {
         maven 'apache maven' // Use the correct Maven name
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/siddhiii07/simple-maven-app.git', branch: 'main'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                echo 'Building the project...'
+                sh 'mvn clean package' // Replace with your actual build command
             }
         }
-
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Running tests...'
+                sh 'mvn test' // Replace with your actual test command
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Add deployment commands here
             }
         }
     }
 
     post {
-        always {
-            cleanWs()
-        }
         success {
-            echo 'Build and Test successful'
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Build or Test failed'
+            echo 'Pipeline failed!'
         }
     }
 }
